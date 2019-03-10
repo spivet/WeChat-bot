@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+html
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport" content="width=device-width, initial-scale=1, user-scalable=no")
+    title 微信消息模板页
+    link(rel="stylesheet" href="./css/template.css")
+
+  body
+    div.main(style=`background-image: url(${oneImg})`)
+      div.content
+        p.weather
+          span.weather-temp= weaTemp
+          span.weather-status(style=`background-image: url(${weaImg})`)= weaStatus
+        p.weather-tips= weaTips
+        p.date= date
+        p.one-words= oneWords

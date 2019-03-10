@@ -10,7 +10,7 @@ body {
   flex-direction: column;
   justify-content: flex-end;
   height: 100%;
-  padding: 0 32px;
+  padding: 0 16px;
   background: url('http://image.wufazhuce.com/FsT8f0U1LqlUtdljfKRR8SOMzGH3') no-repeat center center;
   background-size: cover;
   color: #fff;
@@ -18,21 +18,21 @@ body {
 }
 
 .weather-temp {
-  font-size: 96px;
+  font-size: 48px;
 }
 .weather-status {
   display: inline-block;
-  padding-left: 52px;
+  padding-left: 26px;
   background: url('https://h5tq.moji.com/tianqi/assets/images/weather/w7.png') no-repeat left center;
-  background-size: 46px;
-  font-size: 32px;
+  background-size: 23px;
+  font-size: 16px;
 }
 .weather-tips {
-  font-size: 32px;
+  font-size: 16px;
 }
 .date {
-  font-size: 38px;
+  font-size: 19px;
 }
 .one-words {
-  font-size: 32px;
+  font-size: 16px;
 }

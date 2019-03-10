@@ -1,11 +1,13 @@
-const puppeteer = require('puppeteer')
-const config = require('../config')
-
+/**
+ * 获取墨迹天气数据
+ * @param {Object} page 无头浏览器上下文
+ * @returns {Object} object
+ */
 async function getWeatherData(page) {
-  const weatherTips = await getWeatherTips(page)
+  const weaTips = await getWeatherTips(page)
   const weatherDetail = await getWeatherDetail(page)
   return {
-    weatherTips,
+    weaTips,
     ...weatherDetail
   }
 }
@@ -13,25 +15,25 @@ async function getWeatherData(page) {
 // 获取天气提示
 async function getWeatherTips(page) {
   const wea_tips = await page.$('.wea_tips')
-  const weatherTips = await wea_tips.$eval('em', em => em.innerText)
+  const weatherTips = await wea_tips.$eval('em', (em) => em.innerText)
   return weatherTips
 }
 
 // 获取天气数据
 async function getWeatherDetail(page) {
   const domToday = await page.$('.days')
-  const weatherDetail = await domToday.$$eval('li', li => {
+  const weatherDetail = await domToday.$$eval('li', (li) => {
     const statusImg = li[1].querySelector('img')
-    const statusImgSrc = statusImg.getAttribute('src')
-    const statusText = li[1].innerText
-    const temperature = li[2].innerText
+    const weaImg = statusImg.getAttribute('src')
+    const weaStatus = li[1].innerText
+    const weaTemp = li[2].innerText
     const wind = li[3].innerText.replace(/\n/g, ' ')
     const air = li[4].innerText
 
     return {
-      statusImgSrc,
-      statusText,
-      temperature,
+      weaImg,
+      weaStatus,
+      weaTemp,
       wind,
       air
     }
