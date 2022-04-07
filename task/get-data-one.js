@@ -1,10 +1,10 @@
-async function getOneData(page) {
+export async function getOneData(page) {
   const oneData = await getOneDetail(page)
   return oneData
 }
 
 // 获取 one·一个 的数据
-async function getOneDetail(page) {
+export async function getOneDetail(page) {
   const carousel_inner = await page.$('.carousel-inner')
   const activeItem = await carousel_inner.$('.active')
   const oneImg = await activeItem.$eval('.fp-one-imagen', (img) => img.src)
@@ -12,5 +12,3 @@ async function getOneDetail(page) {
 
   return { oneImg, oneWords }
 }
-
-module.exports = getOneData

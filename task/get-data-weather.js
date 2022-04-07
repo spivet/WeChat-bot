@@ -3,7 +3,7 @@
  * @param {Object} page 无头浏览器上下文
  * @returns {Object} object
  */
-async function getWeatherData(page) {
+export async function getWeatherData(page) {
   const weaTips = await getWeatherTips(page)
   const weatherDetail = await getWeatherDetail(page)
   return {
@@ -41,5 +41,3 @@ async function getWeatherDetail(page) {
 
   return weatherDetail
 }
-
-module.exports = getWeatherData

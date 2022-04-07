@@ -1,16 +1,16 @@
-const schedule = require('node-schedule')
-const puppeteer = require('puppeteer')
-const { FileBox } = require('file-box')
-const config = require('../config')
-const getOneData = require('./get-data-one')
-const getWeatherData = require('./get-data-weather')
-const getTemp = require('./get-data-temp')
+import schedule from 'node-schedule'
+import puppeteer from 'puppeteer-core'
+import { FileBox } from 'file-box'
+import config from '../config/index.js'
+import { getOneData } from './get-data-one.js'
+import { getWeatherData } from './get-data-weather.js'
+import { getTemplate } from './get-data-temp.js'
 
 /**
  * 开始定时任务
  * @param {Objcet} bot 微信机器人
  */
-async function startScheduleJob(bot) {
+async function start(bot) {
   // 每日天气
   schedule.scheduleJob(config.GETUP_TIME, async () => {
     try {
@@ -29,7 +29,7 @@ async function startScheduleJob(bot) {
       // 把取到的值赋给变量tempData
       global.tempData = { weaTips, weaTemp, weaImg, weaStatus, oneImg, oneWords }
       // 重新启动一个浏览器，并截图
-      await getTemp()
+      await getTemplate()
       // 给尾巴发消息
       const fileBox = FileBox.fromFile(config.TEP_PIC_NAME)
       const weiba = await bot.Contact.find({ alias: config.ALIAS })
@@ -53,4 +53,6 @@ async function startScheduleJob(bot) {
   }
 }
 
-module.exports = startScheduleJob
+export default {
+  start
+}

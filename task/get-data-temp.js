@@ -1,8 +1,8 @@
-const path = require('path')
-const puppeteer = require('puppeteer')
-const config = require('../config')
+import path from 'path'
+import puppeteer from 'puppeteer-core'
+import config from '../config/index.js'
 
-async function getTemplate(weaTemp, weaImg, weaStatus, weaTips, oneImg, oneWords) {
+export async function getTemplate(weaTemp, weaImg, weaStatus, weaTips, oneImg, oneWords) {
   const browser = await puppeteer.launch({
     defaultViewport: {
       width: 375,
@@ -14,5 +14,3 @@ async function getTemplate(weaTemp, weaImg, weaStatus, weaTips, oneImg, oneWords
   await page.screenshot({ path: path.join(config.TEP_PIC_NAME) })
   await browser.close()
 }
-
-module.exports = getTemplate

@@ -1,4 +1,4 @@
-module.exports = {
+export default {
   ONE_HOST: 'http://wufazhuce.com/', // ONE的web版网站
   MOJI_HOST: 'https://tianqi.moji.com/weather/china/hubei/dongxihu-district', // 中国墨迹天气url
   TEP_HOST: 'http://localhost:3000/temp', // 生成消息图片用的HTML模板页面
